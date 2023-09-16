@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyText
-  price: 1
+Hello_kitty:
+  title: Hello Kitty Mirror
+  description: Desktop vanity mirror
+  price: 200
 
-two:
-  title: MyString
-  description: MyText
-  price: 1
+Cinnamon:
+  title: Cinnamon Roll Lamp
+  description: Moon led lamp
+  price: 300
