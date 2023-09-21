@@ -23,5 +23,25 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test 'allow create a new product' do
     post products_path, params: { product: { title: 'Le Wagon Cap', description: 'Keep the sun out of your eyes', price: 25 } }
     assert_redirected_to products_path
+    assert_equal flash[:notice], 'Product successfully created'
+  end
+  test 'does not allow create a new product with empty fields' do
+    post products_path, params: { product: { title: '', description: 'Keep the sun out of your eyes', price: 25 } }
+    assert_response :unprocessable_entity
+  end
+  test 'render an edit product form' do
+    get edit_product_path(products(:Cinnamon))
+    assert_response :success
+    assert_select 'form'
+
+  end
+  test 'allow to update a product' do
+    patch product_path(products(:Cinnamon)), params: { product: { price: 450 } }
+    assert_redirected_to products_path
+    assert_equal flash[:notice], 'Product successfully updated'
   end
 end
+
+
+
+
