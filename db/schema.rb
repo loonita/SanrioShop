@@ -10,38 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_21_004312) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_22_003152) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "adminpack"
   enable_extension "plpgsql"
 
-  create_table "arrendatario", primary_key: "ruta", id: { type: :string, limit: 12 }, force: :cascade do |t|
-    t.string "nombre", limit: 20
-    t.string "telefono", limit: 20
-    t.string "direccion", limit: 20
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "asiste", primary_key: ["dep_id", "soc_cod", "asi_fecha"], force: :cascade do |t|
-    t.integer "dep_id", null: false
-    t.integer "soc_cod", null: false
-    t.date "asi_fecha", null: false
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "deporte", primary_key: "dep_id", id: :integer, default: nil, force: :cascade do |t|
-    t.string "dep_nombre", limit: 20
-    t.string "dep_nivel", limit: 10
-  end
-
-  create_table "dueño", primary_key: "rutd", id: { type: :string, limit: 12 }, force: :cascade do |t|
-    t.string "nombre", limit: 20
-    t.string "telefono", limit: 10
-    t.string "direccion", limit: 20
-  end
-
-  create_table "producto", primary_key: "pro_cod", id: :integer, default: nil, force: :cascade do |t|
-    t.string "pro_nombre", limit: 20
-    t.string "pro_tipo", limit: 10
-    t.string "pro_unidadmedida", limit: 10
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "products", force: :cascade do |t|
@@ -52,24 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_21_004312) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "receta", primary_key: "rec_cod", id: :integer, default: nil, force: :cascade do |t|
-    t.string "rec_nombre", limit: 20
-    t.string "rec_tipo", limit: 10
-  end
-
-  create_table "requiere", primary_key: ["pro_cod", "rec_cod"], force: :cascade do |t|
-    t.integer "pro_cod", null: false
-    t.integer "rec_cod", null: false
-    t.integer "req_cantidad"
-  end
-
-  create_table "socio", primary_key: "soc_cod", id: :integer, default: nil, force: :cascade do |t|
-    t.string "soc_nombre", limit: 20
-    t.string "soc_tipo", limit: 20
-  end
-
-  add_foreign_key "asiste", "deporte", column: "dep_id", primary_key: "dep_id", name: "asiste_dep_id_fkey"
-  add_foreign_key "asiste", "socio", column: "soc_cod", primary_key: "soc_cod", name: "asiste_soc_cod_fkey"
-  add_foreign_key "requiere", "producto", column: "pro_cod", primary_key: "pro_cod", name: "requiere_pro_cod_fkey"
-  add_foreign_key "requiere", "receta", column: "rec_cod", primary_key: "rec_cod", name: "requiere_rec_cod_fkey"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end
