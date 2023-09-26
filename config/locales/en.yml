@@ -20,20 +20,45 @@ en:
               blank: 'Price cant be blank'
   common:
     confirm: 'Are you sure?'
+    back: 'Go back'
   products:
     edit:
       title: 'Edit product'
-
     new:
       title: 'New product'
     index:
       title: 'Products'
-    created:
-        notice: 'Product successfully created'
-    updated:
-        notice: 'Product successfully updated'
+      all: 'All products'
+      min_price: 'Min price'
+      max_price: 'Max price'
+      query_text: 'Search'
+    show:
+      edit: 'Edit'
+      delete: 'Delete'
+    create:
+      created: 'Product successfully created'
+    update:
+      updated: 'Product successfully updated'
     destroy:
-        destroyed: 'Product successfully deleted'
+      destroyed: 'Product successfully deleted'
+  categories:
+    category:
+      edit: 'Edit'
+      delete: 'Delete'
+    index:
+      title: 'Categories'
+      new: 'Add category'
+    edit:
+      title: 'Edit category'
+    create:
+      created: 'Category successfully created'
+    update:
+        updated: 'Category successfully updated'
+    destroy:
+        destroyed: 'Category successfully deleted'
+    new:
+      title: 'New category'
+
 
 
 

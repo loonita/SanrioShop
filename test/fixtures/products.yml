@@ -1,11 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-Hello_kitty:
+Hello:
   title: Hello Kitty Mirror
   description: Desktop vanity mirror
   price: 200
+  category: cute
 
 Cinnamon:
   title: Cinnamon Roll Lamp
   description: Moon led lamp
   price: 300
+  category: cute
+
+lamp:
+    title: Plush
+    description: plush toy
+    price: 100
+    category: cute
