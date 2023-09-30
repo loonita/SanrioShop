@@ -32,6 +32,10 @@ en:
       min_price: 'Min price'
       max_price: 'Max price'
       query_text: 'Search'
+      expensive: 'Expensive'
+      cheapest: 'Cheapest'
+      newest: 'Newest'
+
     show:
       edit: 'Edit'
       delete: 'Delete'

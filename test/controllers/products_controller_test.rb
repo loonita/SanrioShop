@@ -16,7 +16,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get products_path(min_price: 160, max_price: 300)
     assert_response :success
     assert_select '.product', 2
-    assert_select 'h2', 'My Melody Plush'
+    assert_select 'h2', 'Cinnamon Roll Lamp'
   end
   test 'render a list of products filtered by query_text' do
     get products_path(query_text: 'lamp')
@@ -24,6 +24,19 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_select '.product', 1
     assert_select 'h2', 'Cinnamon Roll Lamp'
   end
+  test 'search a product by query_text' do
+    get products_path(query_text: 'lamp')
+    assert_response :success
+    assert_select '.product', 1
+    assert_select 'h2', 'Cinnamon Roll Lamp'
+  end
+  test 'sort products by expensive prices first' do
+    get products_path(order_by: 'expensive')
+    assert_response :success
+    assert_select '.product', 3
+    assert_select '.products .product:first-child h2', 'Cinnamon Roll Lamp'
+  end
+
 
   test 'render a detailed product page' do
     get product_path(products(:Cinnamon))
