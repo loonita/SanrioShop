@@ -3,8 +3,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test 'render a list of products' do
     get products_path
     assert_response :success
-    assert_select '.product', 3
-    assert_select '.category', 2
+    assert_select '.product', 12
+    assert_select '.category', 11
 
   end
   test 'render a list of products filtered by category' do
@@ -15,7 +15,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test 'render a list of products filtered by min_price and max_price' do
     get products_path(min_price: 160, max_price: 300)
     assert_response :success
-    assert_select '.product', 2
+    assert_select '.product', 4
     assert_select 'h2', 'Cinnamon Roll Lamp'
   end
   test 'render a list of products filtered by query_text' do
@@ -33,8 +33,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test 'sort products by expensive prices first' do
     get products_path(order_by: 'expensive')
     assert_response :success
-    assert_select '.product', 3
-    assert_select '.products .product:first-child h2', 'Cinnamon Roll Lamp'
+    assert_select '.product', 12
+    assert_select '.products .product:first-child h2', 'Seat Panda clásico'
   end
 
 
@@ -45,6 +45,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_select '.description', 'Moon led lamp'
     assert_select '.price', '300'
   end
+
 
   test 'render a new product form' do
   get new_product_path
