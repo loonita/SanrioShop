@@ -1,4 +1,6 @@
 en:
+  app_name: 'Sanrio Shop'
+  meta_title: 'kawaii shop'
   activerecord:
     models:
       product: Product
@@ -21,6 +23,13 @@ en:
   common:
     confirm: 'Are you sure?'
     back: 'Go back'
+  shared:
+    header:
+      add: 'Add product'
+  authentication:
+    users:
+      create:
+        created: 'User successfully created'
   products:
     edit:
       title: 'Edit product'

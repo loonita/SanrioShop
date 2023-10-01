@@ -1,4 +1,6 @@
 es:
+  app_name: 'Tienda Sanrio'
+  meta_title: 'kawaii shop'
   activerecord:
     models:
       product: Producto
@@ -21,6 +23,13 @@ es:
   common:
     confirm: '¿Estás seguro?'
     back: 'Regresar'
+  shared:
+    header:
+      add: 'Añadir producto'
+  authentication:
+    users:
+      create:
+        created: 'Usuario creado exitosamente'
   products:
     edit:
       title: 'Editar producto'
